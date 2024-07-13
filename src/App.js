@@ -30,7 +30,21 @@ const expenses = [
 ]
 
 function App() {
-  // const [updatedExpenses, setUpdatedExpenses] = useState(expenses);
+  const [updatedExpenses, setUpdatedExpenses] = useState(expenses);
+
+  // Tried this but a problem with it is when we click add expense UI wont update right away.
+  // for that we have to trigger setFilteredExpenses in onSaveExpenseDataHandler as well.
+  // we have to create another state for selected Year and filter using that in App.js itself.
+  // can do that but code gets little complicated so went for easier approach. 
+
+  // const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+
+  // const selectedYearHandler = (selectedYear) => {
+  //   const neededExpenses = updatedExpenses.filter((expense) => {
+  //     return expense.date.getFullYear().toString() === selectedYear
+  //   });
+  //   setFilteredExpenses(neededExpenses);
+  // }
 
   // return React.createElement('div', {}, 
   //   React.createElement('h2', {}, "Let's get started!"),
@@ -38,19 +52,16 @@ function App() {
   // )
 
   const onSaveExpenseDataHandler = (expenseData) => {
-    // setUpdatedExpenses((prev) => {
-    //   return [{
-    //     ...prev,
-    //     expenseData
-    //   }]
-    // })
+    setUpdatedExpenses((prev) => {
+      return [ expenseData, ...prev ]
+    })
     console.log(expenseData)
-  }
+  };
 
   return (
     <div>
       <NewExpense onSaveExpenseData={onSaveExpenseDataHandler} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={updatedExpenses} />
     </div>
   );
 }
