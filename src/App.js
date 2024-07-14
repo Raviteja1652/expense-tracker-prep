@@ -13,13 +13,13 @@ const expenses = [
     id: 'e2',
     title: 'Phone EMI',
     amount: 3600,
-    date: new Date(2023, 6, 4)
+    date: new Date(2023, 9, 4)
   },
   {
     id: 'e3',
     title: 'Utensils',
     amount: 1500,
-    date: new Date(2023, 6, 2)
+    date: new Date(2021, 6, 2)
   },
   {
     id: 'e4',
